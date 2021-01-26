@@ -1,0 +1,2 @@
+# Expected-Uncertainty-Reduction-for-Kriging-based-Reliability-Analysis
+In his project, we proposed a new acquisition function for kriging-based reliability analysis, namely expected uncertainty reduction (EUR), that serves as a meta-criterion to select the best sample from a set of optimal samples, each identified from a large number of candidate samples according to the criterion of an acquisition function. 
