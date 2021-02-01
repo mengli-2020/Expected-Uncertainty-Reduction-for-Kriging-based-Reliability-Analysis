@@ -51,7 +51,8 @@ Contributions are welcome!  For bug reports or requests please [submit an issue]
 Feel free to contact me to discuss any issues, questions or comments.
 
 * GitHub: [limhit2019](https://github.com/lmhit2019)
-* Email: [lm881020@gmail.com]
+* Contact: Meng Li, Chao Hu
+* Email: [lm881020@gmail.com], [chaohu@iastate.edu]
 
 ### BibTex reference format for citation for the Code
 ```
