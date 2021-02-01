@@ -13,7 +13,8 @@ EUR does not rely on the local utility measure derived based on the kriging post
 
 ## Case Study 1: A 2D Example with High Nonlinearity
 
-The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as 
+The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as::
+  Performance function 1
 
 where the coefficient a is used to adjust the nonlinearity of G(x). The two input random variables x_1 and x_2 are considered to be independent from each other, both of which follow the normal distribution (μ = 1.5, σ = 1).
 
@@ -29,9 +30,11 @@ After implementing the main function, the reliability estimation results can be 
 
 ## Case Study 2: An 7D Example with Strong Variate Interactions
 
-The second case study considers a two-degree-of-freedom primary-secondary system with uncertain damped oscillators in the presence of white noise. The performance function of this system is mathematically expressed as
+The second case study considers a two-degree-of-freedom primary-secondary system with uncertain damped oscillators in the presence of white noise. The performance function of this system is mathematically expressed as::
 
-where ω_p=√(k_p/m_p ), ω_s=√(k_s/m_s ), ω_a=〖(ω〗_p+ω_s)/2 , ξ_a=〖(ξ〗_p+ξ_s)/2 , γ=m_s/m_p and θ=〖(ω〗_p-ω_s)/ω_a, x = [ω_p,ω_s,ω_a,ξ_a,γ,θ]. The reliability level of the system varies depending on the load Fs. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
+   Performace function 2 here
+
+where . The reliability level of the system varies depending on the load Fs. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
 
 The main function to implement this case study is 'main_Examle2.m', while Fs can be set for the performance function in line 8 of the main function.
 
