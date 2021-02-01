@@ -11,15 +11,31 @@ Several acquisition functions have been proposed for kriging-based reliability a
 EUR does not rely on the local utility measure derived based on the kriging posterior of a performance function as most existing acquisition functions do. Instead, EUR directly quantifies the expected reduction of the uncertainty in the prediction of limit-state function by adding an optimal sample. The uncertainty reduction is quantified by sampling over the kriging posterior. In the proposed EUR-based sequential sampling process, a portfolio that consists of four acquisition functions, i.e., [expected feasibility function (EFF)](https://arc.aiaa.org/doi/abs/10.2514/1.34321?casa_token=CVjYsfQLUXUAAAAA%3A0gYRIvTaXqe34NZG-_jvC8Cs8KXuqPFIZMP96fhmN0MYc3ENjL6YTxNWxMt_5n9hxjAKxiisNQ&), [maximum confidence enhancement (MCE)](https://asmedigitalcollection.asme.org/mechanicaldesign/article/136/2/021006/474056?casa_token=VejqCRHW1NsAAAAA:nAIYsmh9bph7uSrlFqKZ9nh8MdkJAnUlMcni_hQ8qDouIsav_m6x92D9sJJQw3b-RekzJx1D), [expected risk function (ERF)](https://www.sciencedirect.com/science/article/pii/S0307904X14006738), and [sequential exploration-exploitation with dynamic trade-off (SEEDT)](https://link.springer.com/article/10.1007/s00158-017-1748-7), is first employed to suggest four optimal samples at each iteration of sequential sampling. Each of these samples is optimal with respect to the selection criterion of the corresponding acquisition function. Then, EUR is employed as the meta-criterion to identify the best sample among those optimal samples.
 
 
-## Case Study 1
+## Case Study 1: A 2D Example with High Nonlinearity
+
+The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as 
+
+where the coefficient a is used to adjust the nonlinearity of G(x). The two input random variables x_1 and x_2 are considered to be independent from each other, both of which follow the normal distribution (μ = 1.5, σ = 1).
+
+The main function to implement this case study is 'main_Example1.m', while the coefficient a can be set for the performance function in 'bmfun2D.m' (line 2).
+
+  line 1: function response= bmfun2D(x)
+  line 2: a=7;
+  line 3: response=((x(1).^2+4).*(x(2)-1))/20-cos(a*x(1)/2)-1.5;
 
 
-
-## Case Study 2
-
+After implementing the main function, the reliability estimation results can be found from lines 78 to 82.
 
 
-## Implemented visualisation functionalities
+## Case Study 2: An 7D Example with Strong Variate Interactions
+
+The second case study considers a two-degree-of-freedom primary-secondary system with uncertain damped oscillators in the presence of white noise. The performance function of this system is mathematically expressed as
+
+where ω_p=√(k_p/m_p ), ω_s=√(k_s/m_s ), ω_a=〖(ω〗_p+ω_s)/2 , ξ_a=〖(ξ〗_p+ξ_s)/2 , γ=m_s/m_p and θ=〖(ω〗_p-ω_s)/ω_a, x = [ω_p,ω_s,ω_a,ξ_a,γ,θ]. The reliability level of the system varies depending on the load Fs. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
+
+The main function to implement this case study is 'main_Examle2.m', while Fs can be set for the performance function in line 8 of the main function.
+
+After implementing the main function, the reliability estimation results can be found from lines 84 to 88.
 
 
 
