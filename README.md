@@ -15,33 +15,60 @@ EUR does not rely on the local utility measure derived based on the kriging post
 
 The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as:
 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" title="G(x)=\frac{(x_{1}^{2}+4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" /></a>
+   <a href="https://www.codecogs.com/eqnedit.php?latex=G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" title="G(x)=\frac{(x_{1}^{2}+4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" /></a>
 
 where the coefficient <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> is used to adjust the nonlinearity of <a href="https://www.codecogs.com/eqnedit.php?latex=G(x)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(x)" title="G(x)" /></a>. The two input random variables <a href="https://www.codecogs.com/eqnedit.php?latex=x_{1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{1}" title="x_{1}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=x_{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{2}" title="x_{2}" /></a> are considered to be independent from each other, both of which follow the normal distribution (<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=1.5,&space;\sigma&space;=1.0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=1.5,&space;\sigma&space;=1.0" title="\mu =1.5, \sigma =1.0" /></a>).
 
-The main function to implement this case study is 'main_Example1.m', while the coefficient a can be set for the performance function in 'bmfun2D.m' (line 2).
+The main function to implement this case study is 'main_Example1.m', while the coefficient a can be set for the performance function in 'bmfun2D.m'.
 
-  line 1: function response= bmfun2D(x)
-  line 2: a=7;
-  line 3: response=((x(1).^2+4).*(x(2)-1))/20-cos(a*x(1)/2)-1.5;
+```matlab
+function response= bmfun2D(x)
+a=7; %Set parameter a here
+response=((x(1).^2+4).*(x(2)-1))/20-cos(a*x(1)/2)-1.5;
+```
 
 
-After implementing the main function, the reliability estimation results can be found from lines 78 to 82.
+After implementing the main function, the reliability estimation results can be generated with the 'rel' function.
+
+```matlab
+% %% Results
+[rel_true rel_EUR ErrorEUR]=rel(modelEUR,obj_fct );
+[rel_true rel_MEU ErrorMEU]=rel(modelMEU,obj_fct );
+[rel_true rel_MCE ErrorMCE]=rel(modelMCE,obj_fct );
+[rel_true rel_EFF ErrorEFF]=rel(modelEFF,obj_fct );
+[rel_true rel_ERF ErrorERF]=rel(modelERF,obj_fct );
+```
 
 
 ## Case Study 2: An 7D Example with Strong Variate Interactions
 
-The second case study considers a two-degree-of-freedom primary-secondary system with uncertain damped oscillators in the presence of white noise. The performance function of this system is mathematically expressed as::
+The second case study considers a two-degree-of-freedom primary-secondary system with uncertain damped oscillators in the presence of white noise. The performance function of this system is mathematically expressed as:
 
-   Performace function 2 here
+   <a href="https://www.codecogs.com/eqnedit.php?latex=G(x)=3k_{s}(\frac{\pi&space;S_{0}&space;}{4\xi&space;_{s}\omega&space;_{s}^{3}}[\frac{\xi&space;_{a}\xi&space;_{s}}{\xi&space;_{p}\xi&space;_{s}(4\xi&space;_{a}^2&plus;&space;\theta&space;^{2})&plus;\gamma\xi&space;_{a}^2&space;}&space;\frac{&space;(\xi&space;_{p}\omega&space;_{p}^{3}&plus;\xi&space;_{s}\omega&space;_{s}^{3}&space;)\omega&space;_{p}&space;}{4\xi&space;_{a}\omega&space;_{a}^{4}}&space;]])^{1/2}-F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(x)=3k_{s}(\frac{\pi&space;S_{0}&space;}{4\xi&space;_{s}\omega&space;_{s}^{3}}[\frac{\xi&space;_{a}\xi&space;_{s}}{\xi&space;_{p}\xi&space;_{s}(4\xi&space;_{a}^2&plus;&space;\theta&space;^{2})&plus;\gamma\xi&space;_{a}^2&space;}&space;\frac{&space;(\xi&space;_{p}\omega&space;_{p}^{3}&plus;\xi&space;_{s}\omega&space;_{s}^{3}&space;)\omega&space;_{p}&space;}{4\xi&space;_{a}\omega&space;_{a}^{4}}&space;]])^{1/2}-F_{s}" title="G(x)=3k_{s}(\frac{\pi S_{0} }{4\xi _{s}\omega _{s}^{3}}[\frac{\xi _{a}\xi _{s}}{\xi _{p}\xi _{s}(4\xi _{a}^2+ \theta ^{2})+\gamma\xi _{a}^2 } \frac{ (\xi _{p}\omega _{p}^{3}+\xi _{s}\omega _{s}^{3} )\omega _{p} }{4\xi _{a}\omega _{a}^{4}} ]])^{1/2}-F_{s}" /></a>
 
-where . The reliability level of the system varies depending on the load Fs. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
+where <a href="https://www.codecogs.com/eqnedit.php?latex=\omega&space;_{p}=\sqrt{k_{p}/m_{p}},&space;\omega&space;_{s}=\sqrt{k_{s}/m_{s}},&space;\omega&space;_{a}=(\omega&space;_{p}&plus;\omega&space;_{s})/2,&space;\xi&space;_{a}=(\xi&space;_{p}&plus;\xi&space;_{s})/2,&space;\gamma&space;=m_{s}/m_{p},&space;\theta&space;=&space;(\omega&space;_{p}-\omega&space;_{s})/\omega&space;_{a},&space;\mathbf{x}=[\omega&space;_{s},\omega&space;_{s},\omega&space;_{s},&space;\xi&space;_{s},&space;\gamma&space;,&space;\theta&space;]." target="_blank"><img src="https://latex.codecogs.com/gif.latex?\omega&space;_{p}=\sqrt{k_{p}/m_{p}},&space;\omega&space;_{s}=\sqrt{k_{s}/m_{s}},&space;\omega&space;_{a}=(\omega&space;_{p}&plus;\omega&space;_{s})/2,&space;\xi&space;_{a}=(\xi&space;_{p}&plus;\xi&space;_{s})/2,&space;\gamma&space;=m_{s}/m_{p},&space;\theta&space;=&space;(\omega&space;_{p}-\omega&space;_{s})/\omega&space;_{a},&space;\mathbf{x}=[\omega&space;_{s},\omega&space;_{s},\omega&space;_{s},&space;\xi&space;_{s},&space;\gamma&space;,&space;\theta&space;]." title="\omega _{p}=\sqrt{k_{p}/m_{p}}, \omega _{s}=\sqrt{k_{s}/m_{s}}, \omega _{a}=(\omega _{p}+\omega _{s})/2, \xi _{a}=(\xi _{p}+\xi _{s})/2, \gamma =m_{s}/m_{p}, \theta = (\omega _{p}-\omega _{s})/\omega _{a}, \mathbf{x}=[\omega _{s},\omega _{s},\omega _{s}, \xi _{s}, \gamma , \theta ]." /></a>. The reliability level of the system varies depending on the load <a href="https://www.codecogs.com/eqnedit.php?latex=F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{s}" title="F_{s}" /></a>. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
 
-The main function to implement this case study is 'main_Examle2.m', while Fs can be set for the performance function in line 8 of the main function.
+The main function to implement this case study is 'main_Examle2.m', while <a href="https://www.codecogs.com/eqnedit.php?latex=F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{s}" title="F_{s}" /></a> can be set for the performance function in the main function.
 
-After implementing the main function, the reliability estimation results can be found from lines 84 to 88.
+```matlab
+%% Design variables definition
+ns = 100000; % number of candidate points
+n_MCS = 1000000; % number of MCS points for reliability analysis
+model.variables.ns=ns;
+model.variables.n_MCS=n_MCS;
+Fs=15; % Set Fs here.
+```
 
+After implementing the main function, the reliability estimation results can be generated with the 'rel' function.
 
+```matlab
+% %% Results
+[rel_true rel_EUR ErrorEUR]=rel(modelEUR,obj_fct );
+[rel_true rel_MEU ErrorMEU]=rel(modelMEU,obj_fct );
+[rel_true rel_MCE ErrorMCE]=rel(modelMCE,obj_fct );
+[rel_true rel_EFF ErrorEFF]=rel(modelEFF,obj_fct );
+[rel_true rel_ERF ErrorERF]=rel(modelERF,obj_fct );
+```
 
 ## Contributions
 
