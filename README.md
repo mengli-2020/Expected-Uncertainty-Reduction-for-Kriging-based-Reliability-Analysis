@@ -13,10 +13,10 @@ EUR does not rely on the local utility measure derived based on the kriging post
 
 ## Case Study 1: A 2D Example with High Nonlinearity
 
-The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as::
-  Performance function 1
+The first case study has a highly nonlinear performance function, which consists of a polynomial part, a trigonometric part, and a constant. The performance function is defined as:
+  <a href="https://www.codecogs.com/eqnedit.php?latex=G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" target="_blank"><img src="https://latex.codecogs.com/gif.latex?G(x)=\frac{(x_{1}^{2}&plus;4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" title="G(x)=\frac{(x_{1}^{2}+4)(x_{2}-1)}{20}-cos(\frac{ax_{1}}{2})-1.5" /></a>
 
-where the coefficient a is used to adjust the nonlinearity of G(x). The two input random variables x_1 and x_2 are considered to be independent from each other, both of which follow the normal distribution (μ = 1.5, σ = 1).
+where the coefficient <a href="https://www.codecogs.com/eqnedit.php?latex=a" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a" title="a" /></a> is used to adjust the nonlinearity of G(x). The two input random variables x_1 and x_2 are considered to be independent from each other, both of which follow the normal distribution (μ = 1.5, σ = 1).
 
 The main function to implement this case study is 'main_Example1.m', while the coefficient a can be set for the performance function in 'bmfun2D.m' (line 2).
 
