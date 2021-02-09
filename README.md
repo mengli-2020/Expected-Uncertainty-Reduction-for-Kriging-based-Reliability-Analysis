@@ -83,13 +83,13 @@ Contributions are welcome!  For bug reports or requests please [submit an issue]
 
 Feel free to contact me to discuss any issues, questions or comments.
 
-* GitHub: [limhit2019](https://github.com/lmhit2019)
+* GitHub: [{mengli-2020](https://github.com/{mengli-2020)
 * Contact: Meng Li, Chao Hu
 * Email: [lm881020@gmail.com], [chaohu@iastate.edu]
 
 ### BibTex reference format for citation for the Code
 ```
-@misc{limhit2019,
+@misc{mengli-2020,
 title={Mixture Density Networks (MDN) for distribution and uncertainty estimation},
 url={https://github.com/lmhit2019/Expected-Uncertainty-Reduction-for-Kriging-based-Reliability-Analysis/},
 note={Matlab codes intended to demonstrate the deployment of the expected uncertainty reduction (EUR) method for kriging-based reliability analysis.},
