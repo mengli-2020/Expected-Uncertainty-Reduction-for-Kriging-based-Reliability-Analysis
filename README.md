@@ -53,7 +53,7 @@ where
  
  The reliability level of the system varies depending on the load <a href="https://www.codecogs.com/eqnedit.php?latex=F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{s}" title="F_{s}" /></a>. The statistical information of the random vaiables in this case study can be found in Table 4 of [Li, M, et al. (2021)](https://link.springer.com/article/10.1007/s00158-020-02831-w).
 
-The main function to implement this case study is 'main_Examle2.m', while <a href="https://www.codecogs.com/eqnedit.php?latex=F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{s}" title="F_{s}" /></a> can be set for the performance function in the main function.
+The main function to implement this case study is 'main_Example2.m', while <a href="https://www.codecogs.com/eqnedit.php?latex=F_{s}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{s}" title="F_{s}" /></a> can be set for the performance function in the main function.
 
 ```matlab
 %% Design variables definition
