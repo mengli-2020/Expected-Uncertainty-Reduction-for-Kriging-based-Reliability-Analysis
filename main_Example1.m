@@ -1,4 +1,6 @@
 function [rel_true, ErrorEUR,ErrorMEU,ErrorMCE,ErrorEFF,ErrorERF] = main_Example1()
+
+addpath('../src');
 rs=randi(50);
 %% Design variables definition
 ns = 10000; % number of candidate points
