@@ -83,7 +83,7 @@ Contributions are welcome!  For bug reports or requests please [submit an issue]
 
 Feel free to contact me to discuss any issues, questions or comments.
 
-* GitHub: [{mengli-2020](https://github.com/{mengli-2020)
+* GitHub: [mengli-2020](https://github.com/{mengli-2020)
 * Contact: Meng Li, Chao Hu
 * Email: [lm881020@gmail.com], [chaohu@iastate.edu]
 
