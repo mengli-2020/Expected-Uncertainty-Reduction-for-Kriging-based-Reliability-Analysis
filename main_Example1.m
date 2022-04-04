@@ -23,7 +23,7 @@ model.noise=1e-10;
 model.n_init=15; % Number of initial sample points
 [model.init_value,model.init_x]=LHS(obj_fct,model,'LHS',rs);
 model.GP = fitrgp(model.init_x,model.init_value,'BasisFunction','none',...
-      'FitMethod','exact','PredictMethod','exact','Sigma',1e-10, 'ConstantSigma',true);
+      'FitMethod','exact','PredictMethod','exact','SigmaLowerBound',1e-10, 'ConstantSigma',true);
 modelEUR=model;
 modelMEU=model;
 modelMCE=model;
@@ -46,7 +46,7 @@ for i = 1:model.total_iter-model.n_init
     modelMCE.init_value=[modelMCE.init_value;f_star];
     modelMCE.init_x=[modelMCE.init_x;x_star];
     modelMCE.GP = fitrgp(modelMCE.init_x,modelMCE.init_value,'BasisFunction','none',...
-                    'FitMethod','exact','PredictMethod','exact','Sigma',1e-10, 'ConstantSigma',true);
+                    'FitMethod','exact','PredictMethod','exact','SigmaLowerBound',1e-10, 'ConstantSigma',true);
 end
 %The EFF method
 for i = 1:model.total_iter-model.n_init
@@ -55,7 +55,7 @@ for i = 1:model.total_iter-model.n_init
     modelEFF.init_value=[modelEFF.init_value;f_star];
     modelEFF.init_x=[modelEFF.init_x;x_star];
     modelEFF.GP = fitrgp(modelEFF.init_x,modelEFF.init_value,'BasisFunction','none',...
-                    'FitMethod','exact','PredictMethod','exact','Sigma',1e-10, 'ConstantSigma',true);
+                    'FitMethod','exact','PredictMethod','exact','SigmaLowerBound',1e-10, 'ConstantSigma',true);
 end
 %The ERF method
 for i = 1:model.total_iter-model.n_init
@@ -64,7 +64,7 @@ for i = 1:model.total_iter-model.n_init
     modelERF.init_value=[modelERF.init_value;f_star];
     modelERF.init_x=[modelERF.init_x;x_star];
     modelERF.GP = fitrgp(modelERF.init_x,modelERF.init_value,'BasisFunction','none',...
-                    'FitMethod','exact','PredictMethod','exact','Sigma',1e-10, 'ConstantSigma',true);
+                    'FitMethod','exact','PredictMethod','exact','SigmaLowerBound',1e-10, 'ConstantSigma',true);
 end
 % the EUR method: 
 for i = 1:model.total_iter-model.n_init
@@ -73,7 +73,7 @@ for i = 1:model.total_iter-model.n_init
     modelEUR.init_value=[modelEUR.init_value;f_star];
     modelEUR.init_x=[modelEUR.init_x;x_star];
     modelEUR.GP = fitrgp(modelEUR.init_x,modelEUR.init_value,'BasisFunction','none',...
-                    'FitMethod','exact','PredictMethod','exact','Sigma',1e-10, 'ConstantSigma',true);
+                    'FitMethod','exact','PredictMethod','exact','SigmaLowerBound',1e-10, 'ConstantSigma',true);
     i
 end
 % %% Results
